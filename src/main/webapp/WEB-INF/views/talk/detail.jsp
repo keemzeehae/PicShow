@@ -12,5 +12,8 @@
 	<h3>내용: ${talk.contents }</h3>
 	<h3>작성자: ${talk.writer }</h3>
 	<a href="./list">List</a>
+	<a href="./delete?num=${talk.num}">Delete</a>
+	<a href="./update?num=${talk.num}">Update</a>
+	
 </body>
 </html>

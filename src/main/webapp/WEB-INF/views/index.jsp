@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<h1>PIC SHOW</h1>
+<h3>님 환영합니다</h3>
 
-<P>  The time on the server is ${serverTime}. </P>
+
 </body>
 </html>

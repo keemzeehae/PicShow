@@ -12,7 +12,7 @@
 	제목 <input type="text" name="title">
 	<div>
 		토크토크
-		<textarea name="contents" rows="50" cols="50"></textarea>
+		<textarea name="contents" rows="30" cols="30"></textarea>
 	</div>
 	작성자 <input type="text" name="writer">
 	<input type="submit"name="ADD">

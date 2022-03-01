@@ -11,6 +11,11 @@ public class TalkService {
 	@Autowired
 	private TalkDAO talkDAO;
 	
+	//update
+	public int update(TalkDTO talkDTO) throws Exception{
+		return talkDAO.update(talkDTO);
+	}
+	
 	//list
 	public List<TalkDTO> list() throws Exception{
 		List<TalkDTO> ar = talkDAO.list();
@@ -25,5 +30,10 @@ public class TalkService {
 	//detail
 	public TalkDTO detail(TalkDTO talkDTO) throws Exception{
 		return talkDAO.detail(talkDTO);
+	}
+	
+	//delete
+	public int delete(TalkDTO talkDTO) throws Exception{
+		return talkDAO.delete(talkDTO);
 	}
 }

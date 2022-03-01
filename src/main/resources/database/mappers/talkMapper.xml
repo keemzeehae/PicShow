@@ -4,16 +4,26 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
     <mapper namespace="com.keem.myapp.talk.TalkDAO">
+    
+    <update id="update" parameterType="TalkDTO">
+    	UPDATE TALK SET TITLE=#{title},CONTENTS=#{contents}
+    	WHERE NUM=#{num}
+    </update>
+    
     <select id="list" resultType="TalkDTO">
     	SELECT * FROM TALK
     </select>
     
     <insert id="add" parameterType="TalkDTO" >
     	INSERT INTO TALK
-		VALUES(TALK_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0);
+		VALUES(TALK_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
     </insert>
     
     <select id="detail" parameterType="TalkDTO" resultType="TalkDTO">
     	SELECT * FROM TALK WHERE NUM=#{num}
     </select>
+    
+    <delete id="delete" parameterType="TalkDTO">
+    	DELETE TALK WHERE NUM=#{num}
+    </delete>
     </mapper>
