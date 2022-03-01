@@ -5,13 +5,20 @@
     
     <mapper namespace="com.keem.myapp.talk.TalkDAO">
     
+	<select id="total" resultType="Long">
+		SELECT COUNT(NUM) FROM TALK
+	</select>    
+    
     <update id="update" parameterType="TalkDTO">
     	UPDATE TALK SET TITLE=#{title},CONTENTS=#{contents}
     	WHERE NUM=#{num}
     </update>
     
-    <select id="list" resultType="TalkDTO">
-    	SELECT * FROM TALK
+    <select id="list" parameterType="Pager" resultType="TalkDTO">
+    	SELECT * FROM 
+		(SELECT ROWNUM R, T.* FROM 
+		(SELECT * FROM Talk WHERE NUM>0 ORDER BY NUM DESC) T)
+			WHERE R BETWEEN #{startRow} and #{lastRow}
     </select>
     
     <insert id="add" parameterType="TalkDTO" >

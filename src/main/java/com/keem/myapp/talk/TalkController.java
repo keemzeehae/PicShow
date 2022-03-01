@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.keem.myapp.util.Pager;
+
 @Controller
 @RequestMapping(value="/talk/*")
 public class TalkController {
@@ -61,10 +63,11 @@ public class TalkController {
 	
 	//list
 	@RequestMapping(value="list",method=RequestMethod.GET)
-	public ModelAndView list (ModelAndView mv) throws Exception{
-		List<TalkDTO> ar = talkService.list();
+	public ModelAndView list (ModelAndView mv,Pager pager) throws Exception{
+		List<TalkDTO> ar = talkService.list(pager);
 		
 		mv.addObject("list",ar);
+		mv.addObject("pager",pager);
 		mv.setViewName("talk/list");
 		return mv;
 	}

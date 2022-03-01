@@ -8,18 +8,23 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.keem.myapp.MyJunitTest;
+import com.keem.myapp.util.Pager;
 
 public class TalkTest extends MyJunitTest{
 
 	@Autowired
 	private TalkDAO talkDAO;
 	
-	//@Test
-	public void list() throws Exception{
-		List<TalkDTO> ar = talkDAO.list();
-		assertEquals(1, ar.size());
-	}
 	@Test
+	public void list() throws Exception{
+		Pager pager = new Pager();
+		pager.makeRow();
+		List<TalkDTO> ar = talkDAO.list(pager);
+		System.out.println(ar.get(0).getNum());
+		System.out.println(ar.get(9).getNum());
+		assertEquals(10, ar.size());
+	}
+	//@Test
 	public void add() throws Exception{
 		for(int i=0;i<200;i++) {
 			TalkDTO talkDTO = new TalkDTO();

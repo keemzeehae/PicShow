@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.keem.myapp.util.Pager;
+
 @Service
 public class TalkService {
 
@@ -17,8 +19,13 @@ public class TalkService {
 	}
 	
 	//list
-	public List<TalkDTO> list() throws Exception{
-		List<TalkDTO> ar = talkDAO.list();
+	public List<TalkDTO> list(Pager pager) throws Exception{
+		pager.makeRow();
+		Long totalCount=talkDAO.total(pager);
+		pager.makeNum(totalCount);
+		
+		List<TalkDTO> ar = talkDAO.list(pager);
+		
 		return ar;
 	}
 	

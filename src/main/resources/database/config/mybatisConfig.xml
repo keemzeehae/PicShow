@@ -6,5 +6,6 @@
  <configuration>
  	<typeAliases>
  		<typeAlias type="com.keem.myapp.talk.TalkDTO" alias="TalkDTO"/>
+ 		<typeAlias type="com.keem.myapp.util.Pager" alias="Pager"/>
  	</typeAliases>
  </configuration>
