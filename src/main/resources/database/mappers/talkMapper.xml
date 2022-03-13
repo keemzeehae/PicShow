@@ -7,6 +7,17 @@
     
 	<select id="total" resultType="Long">
 		SELECT COUNT(NUM) FROM TALK
+		WHERE NUM>0
+		AND 
+		<choose>
+			<when test="kind=='title'">
+				TITLE
+			</when>
+			<otherwise>
+				CONTENTS
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
 	</select>    
     
     <update id="update" parameterType="TalkDTO">
@@ -17,8 +28,19 @@
     <select id="list" parameterType="Pager" resultType="TalkDTO">
     	SELECT * FROM 
 		(SELECT ROWNUM R, T.* FROM 
-		(SELECT * FROM Talk WHERE NUM>0 ORDER BY NUM DESC) T)
-			WHERE R BETWEEN #{startRow} and #{lastRow}
+		(SELECT * FROM Talk WHERE NUM>0 
+		AND 
+		<choose>
+			<when test="kind=='title'">
+				TITLE
+			</when>
+			<otherwise>
+				CONTENTS
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+		ORDER BY NUM DESC) T)
+		WHERE R BETWEEN #{startRow} and #{lastRow}
     </select>
     
     <insert id="add" parameterType="TalkDTO" >

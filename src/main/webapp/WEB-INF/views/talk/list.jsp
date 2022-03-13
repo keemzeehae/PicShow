@@ -9,11 +9,12 @@
 </head>
 <body>
 	<h1>Small Talk! Show</h1>
+	<form action="./list" method="get"></form>
 	<table>
 		<thead>
 			<tr>
+				<th>글번호</th>
 				<th>제목</th>
-				<th>내용</th>
 				<th>작성자</th>
 				<th>작성일자</th>
 				<th>조회수</th>
@@ -23,8 +24,8 @@
 		<tbody>
 				<c:forEach items="${list}" var="talk">
 					<tr>
-						<td><a href="./detail?num=${talk.num}">${talk.title}</a></td>
-						<td>${talk.contents}</td>
+						<td>${talk.num}</a></td>
+						<td><a href="./detail?num=${talk.num}">${talk.title}</td>
 						<td>${talk.writer}</td>
 						<td>${talk.regDate}</td>
 						<td>${talk.hit}</td>

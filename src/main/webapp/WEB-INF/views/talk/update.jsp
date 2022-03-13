@@ -11,7 +11,10 @@
 	<form action="./update" method="POST">
 		<input type="hidden" readonly="readonly" name="num" value="${dto.num}">
 		title <input type="text" name="title" value="${dto.title}">
-		small talk! <textarea name="contents" rows="30" cols="30">${dto.contents}</textarea>
+		<div>
+			small talk!
+			<textarea name="contents" rows="10" cols="30">${dto.contents}</textarea>
+		</div>
 		<input type="submit" value="Update">
 	</form>
 </body>
