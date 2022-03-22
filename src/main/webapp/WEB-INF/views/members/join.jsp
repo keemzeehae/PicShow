@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1> Birth test</h1>
+<form action="./join" method="post" id="frm">
+	<fieldset>
+		<legend>Birth</legend>
+		<input type="date" name="birth" id="birth">
+	</fieldset>
+	
+	<fieldset>
+		<button type="submit" id="btn">Join</button>
+	</fieldset>
+</form>
 </body>
 </html>
